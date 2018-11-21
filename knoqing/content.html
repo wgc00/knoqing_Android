@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jump</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="css/mui.min.css">
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-back mui-pull-left" href="index.html"></a>
+		</header>
+
+		<div id="content" class="mui-content mui-scroll-wrapper"></div>
+
+		<script src="js/mui.min.js"></script>
+		<script>
+			//启用a标签
+			mui('body').on('tap', 'a', function() {
+				window.top.location.href = this.href;
+			});
+			
+			var content = document.getElementById("content");
+			var url = window.location.search;
+
+
+			var id;
+			if (url.indexOf("?") != -1) {
+				var str = url.substr(1);
+				strs = str.split("=");
+				id = strs[1];
+			};
+			mui.ajax({
+				url: "https://news-at.zhihu.com/api/4/news/" + id, 
+				type: "get",
+				success: function(data) {
+					content.innerHTML = '<object type="text/html" data="' + data.share_url + '" width="100%" height="100%"></object>';
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<!--App自定义的css-->
+		<!--<link rel="stylesheet" type="text/css" href="../
+		css/app.css"/>-->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+	</head>
+	<body>
+		<!-- 侧滑导航根容器 -->
+<div class="mui-off-canvas-wrap mui-draggable">
+  <!-- 菜单容器 -->
+  <aside class="mui-off-canvas-left">
+    <div class="mui-scroll-wrapper">
+      <div class="mui-scroll">
+        <!-- 菜单具体展示内容 -->
+        ...
+      </div>
+    </div>
+  </aside>
+  <!-- 主页面容器 -->
+  <div class="mui-inner-wrap">
+    <!-- 主页面标题 -->
+    	<header class="mui-bar mui-bar-nav mui-bar-transparent" data-top='0' data-offset='150' data-duration='16' data-scrollby=".mui-scroll-wrapper">
+	<h1 class="mui-title">今日新闻</h1>
+</header>
+    <div class="mui-content mui-scroll-wrapper">
+      <div class="mui-scroll">
+        <div id="slider" class="mui-slider" >
+        			<div class="mui-slider-group mui-slider-loop">
+        				<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+        				<div class="mui-slider-item mui-slider-item-duplicate">
+        					<a href="#">
+        						<img  class="image1" src="../img/4.jpg">
+        					</a>
+        				</div>
+        				<!-- 第一张 -->
+        				<div class="mui-slider-item">
+        					<a href="#">
+        						<img  class="image1" src="../img/1.jpg">
+        					</a>
+        				</div>
+        				<!-- 第二张 -->
+        				<div class="mui-slider-item">
+        					<a href="#">
+        						<img   class="image1"src="../img/2.jpg">
+        					</a>
+        				</div>
+        				<!-- 第三张 -->
+        				<div class="mui-slider-item">
+        					<a href="#">
+        						<img  class="image1" src="../img/3.jpg">
+        					</a>
+        				</div>
+        				<!-- 第四张 -->
+        				<div class="mui-slider-item">
+        					<a href="#">
+        						<img  class="image1" src="../img/2.jpg">
+        					</a>
+        				</div>
+        				<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+        				<div class="mui-slider-item mui-slider-item-duplicate">
+        					<a href="#">
+        						<img  class="image1" src="../img/4.jpg">
+        					</a>
+        				</div>
+        			</div>
+        			<div class="mui-slider-indicator">
+        				<div class="mui-indicator mui-active"></div>
+        				<div class="mui-indicator"></div>
+        				<div class="mui-indicator"></div>
+        				<div class="mui-indicator"></div>
+        			</div>
+        		</div>
+				<p>今日头条</p>
+        		<ul class="mui-table-view">
+            <li class="mui-table-view-cell mui-media">
+                <a href="javascript:;">
+                    <img class="mui-media-object mui-pull-right" src="https://pic4.zhimg.com/v2-210599b96ebf467981cff28dd3d4d037.jpg">
+                    <div class="mui-media-body">
+                       <!-- 我是狗，也是一只行走的拖把 -->
+                      <p class='mui-ellipsis'> 我是狗，也是一只行走的拖把</p>
+                    </div>
+                </a>
+            </li>
+            <li class="mui-table-view-cell mui-media">
+                <a href="javascript:;">
+                    <img class="mui-media-object mui-pull-right" src="https://pic3.zhimg.com/v2-7f834d5c3e575d6e9d5df8cf9716bcae.jpg"/>
+					<div class="mui-media-body">
+						
+                        <p class='mui-ellipsis'>从患者体内取出骨头，杀死癌细胞后再放回体内，可信吗？</p>
+                    </div>
+                </a>
+            </li>
+            <li class="mui-table-view-cell mui-media">
+                <a href="javascript:;">
+                    <img class="mui-media-object mui-pull-right" src="https://pic2.zhimg.com/v2-31324f44c54d822165151233e3f5e701.jpg">
+                    <div class="mui-media-body">
+                      <!--  CBD -->
+                       <p class='mui-ellipsis'>同样是做面很厉害，为什么山西面食不如西安面食有名？</p>
+                    </div>
+                </a>
+            </li>
+			<li class="mui-table-view-cell mui-media">
+				<a href="javascript:;">
+					<img class="mui-media-object mui-pull-right" src="https://pic2.zhimg.com/v2-53ba74179f5be831e3bb9a5468103ecd.jpg">
+					<div class="mui-media-body">
+					<p class='mui-ellipsis'>想买什么淘宝就推什么，它是怎么看穿我的？</p>
+					</div>
+				</a>
+			</li>
+        </ul>
+      </div>
+    </div>  
+  </div>
+</div>
+		
+<script src="../js/mui.min.js"></script>
+<script type="text/javascript" charset="utf-8">
+	
+	//菜单栏
+	document.querySelector('.mui-off-canvas-wrap').addEventListener('shown',function (event) {
+		mui('.mui-off-canvas-wrap').offCanvas().isShown();
+	})
+	//图片轮转
+	var slider = mui("#slider");
+	slider.slider({
+		interval: 2000
+	});
+	
+	var titleNView = {
+			backgroundColor: '#f7f7f7',//导航栏背景色
+			titleText: '透明渐变(native模式)',//导航栏标题
+			titleColor: '#000000',//文字颜色
+			type:'transparent',//透明渐变样式
+			autoBackButton: true,//自动绘制返回箭头
+			splitLine:{//底部分割线
+				color:'#cccccc'
+		}
+	}
+
+	//使用mui的窗口打开方式
+	mui.openWindow({
+		url:"nav_transparent_native.html",
+		id:"nav_transparent_demo"
+		styles:{
+			titleNView:titleNView
+		}
+	});
+	
+	mui('.mui-bar-transparent').transparent({
+    top: 0,
+    offset: 150,
+    duration: 16,
+    scrollby: document.querySelector('.mui-scroll-wrapper')
+})
+	
+	
+</script>
+</body>
+
+</html>
